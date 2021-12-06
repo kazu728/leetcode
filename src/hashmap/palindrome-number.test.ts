@@ -1,4 +1,4 @@
-import { assertEquals } from "./deps.ts";
+import { assertEquals } from "../deps.ts";
 import { isPalindrome } from "./palindrome-number.ts";
 
 Deno.test("Should be parindrome", () => {

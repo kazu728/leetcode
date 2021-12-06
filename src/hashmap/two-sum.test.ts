@@ -1,4 +1,4 @@
-import { assertEquals } from "./deps.ts";
+import { assertEquals } from "../deps.ts";
 import { twoSum } from "./two-sum.ts";
 
 Deno.test("Should return right index in case of target is 9", () => {
