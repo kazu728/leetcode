@@ -12,6 +12,12 @@ export class TreeNode<T> {
     this.right = right === undefined ? null : right;
   }
 
+  static createInitilaNode<T>(input: MaybeValue<T>[]): MaybeNode<T> {
+    if (input.length === 0) return null;
+
+    return input[0] === null ? null : new TreeNode(input[0]);
+  }
+
   static createInstanceFromArray<T>(input: MaybeValue<T>[]): MaybeNode<T> {
     if (input.length === 0) return null;
 
@@ -19,6 +25,25 @@ export class TreeNode<T> {
     const initialNode: TreeNode<T> = new TreeNode<T>(inputWithSentinel[1]);
 
     return gen<T>(initialNode, inputWithSentinel, 1);
+  }
+
+  insert(node: TreeNode<T>, value: T): TreeNode<T> {
+    if (node.val !== null && node.val < value) {
+      if (node.right === null) {
+        node.right = value ? new TreeNode(value) : null;
+      } else {
+        node.right = this.insert(node.right, value);
+      }
+    }
+
+    if (node.val !== null && node.val > value!) {
+      if (node.left === null) {
+        node.left = value ? new TreeNode(value) : null;
+      } else {
+        node.left = this.insert(node.left, value);
+      }
+    }
+    return node;
   }
 }
 
