@@ -24,7 +24,7 @@ export class TreeNode<T> {
     const inputWithSentinel: MaybeValue<T>[] = [null, ...input];
     const initialNode: TreeNode<T> = new TreeNode<T>(inputWithSentinel[1]);
 
-    return gen<T>(initialNode, inputWithSentinel, 1);
+    return genCompleteBinaryTree<T>(initialNode, inputWithSentinel, 1);
   }
 
   insert(node: TreeNode<T>, value: T): TreeNode<T> {
@@ -47,7 +47,7 @@ export class TreeNode<T> {
   }
 }
 
-const gen = <T>(
+const genCompleteBinaryTree = <T>(
   node: MaybeNode<T>,
   input: MaybeValue<T>[],
   i: number
@@ -59,8 +59,12 @@ const gen = <T>(
   const right = 2 * i + 1;
   const rightValue: MaybeValue<T> = input[right];
 
-  node.left = leftValue ? gen(new TreeNode(leftValue), input, left) : null;
-  node.right = rightValue ? gen(new TreeNode(rightValue), input, right) : null;
+  node.left = leftValue
+    ? genCompleteBinaryTree(new TreeNode(leftValue), input, left)
+    : null;
+  node.right = rightValue
+    ? genCompleteBinaryTree(new TreeNode(rightValue), input, right)
+    : null;
 
   return node;
 };
