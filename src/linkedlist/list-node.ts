@@ -19,7 +19,7 @@ export class ListNode<T> {
     const linkNextNode = (node: ListNode<T>, i: number): ListNode<T> => {
       const isLastElement = i === input.length - 1;
       const nextNode = isLastElement
-        ? headNodes[pos]
+        ? headNodes[pos] || null
         : headNodes[i + 1] || null;
 
       node.next = nextNode;
