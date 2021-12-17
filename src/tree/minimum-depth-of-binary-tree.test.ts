@@ -6,7 +6,7 @@ Deno.test("Should be depth of 2", () => {
   const input = [3, 9, 20, null, null, 15, 7];
   const output = 2;
 
-  const node = TreeNode.createInstanceFromArray(input);
+  const node = TreeNode.createCompleteBinaryTree(input);
 
   assertEquals(minDepth(node), output);
 });

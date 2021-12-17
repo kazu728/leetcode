@@ -18,7 +18,7 @@ export class TreeNode<T> {
     return input[0] === null ? null : new TreeNode(input[0]);
   }
 
-  static createInstanceFromArray<T>(input: MaybeValue<T>[]): MaybeNode<T> {
+  static createCompleteBinaryTree<T>(input: MaybeValue<T>[]): MaybeNode<T> {
     if (input.length === 0) return null;
 
     const inputWithSentinel: MaybeValue<T>[] = [null, ...input];
